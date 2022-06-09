@@ -1,0 +1,99 @@
+// app global css in SCSS form
+// GENERAL
+[clickable] {
+  cursor: pointer;
+}
+
+// HELPERS
+.mt40 {
+  margin-top: 40px;
+}
+
+// LINKS
+a {
+  text-decoration: none;
+  color: $primary;
+}
+
+// CONTAINERS
+.flex.center {
+  align-items: center;
+}
+.flex.centered {
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0px 40px;
+}
+.modal-container {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  top: -60px;
+  left: 0;
+  z-index: 22;
+  height: 110%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.modal h1, .modal h2, .modal h3 {
+  margin-top: 10px;
+}
+.modal {
+  min-width: 600px;
+  max-width: 100%;
+  padding: 20px 40px;
+  margin: auto;
+  background: white;
+  border-radius: 15px;
+}
+
+// TOPBAR
+.logo {
+  width: 120px;
+  margin-top: -10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+// LOGIN BUTTON
+#login-box {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.loginButton {
+  margin-left: 10px;
+}
+#login-required .q-icon {
+  margin-right: 40px;
+}
+#login-required {
+  padding: 30px 30px 40px 30px;
+  margin-top: 40px;
+  border-radius: 20px;
+  border: 3px solid black;
+}
+
+// WALLET PAGE
+#balances .row {
+  line-height: 30px;
+}
+#transfers [clickable]:hover, #balances [clickable]:hover {
+  transform: scale(1.5);
+}
+#transfers [clickable], #balances [clickable] {
+  transition: 400ms transform ease;
+}
+.token-logo {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
