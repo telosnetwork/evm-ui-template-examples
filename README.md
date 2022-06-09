@@ -8,6 +8,9 @@ npm install
 ```
 
 ### Rename .env.sample to .env 
+```bash
+mv .env.sample .env
+```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
