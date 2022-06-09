@@ -40,5 +40,10 @@ npm run format
 quasar build
 ```
 
+## Go further
+
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+
+### Get to know EthersJS
+See the [documentation](https://docs.ethers.io/v5/)
