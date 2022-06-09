@@ -1,6 +1,10 @@
 # Telos EVM Quasar Vue Template (evm-ui-template)
 
-A Quasar Project
+Use this template on Github as a starting point for your app and save the time of writing all the boilerplate code. It uses Quasar & Vue and has an implementation etherJS. You can test it with the Login button and get inspiration using the examples in the side menu like our Wallet Page (query balances, send transfers) & NFT Gallery (query metadata).
+
+## Requirements
+
+This template requires NodeJS 14+ and NPM installed
 
 ## Install the dependencies
 ```bash
