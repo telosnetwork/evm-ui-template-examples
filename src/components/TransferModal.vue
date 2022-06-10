@@ -87,6 +87,9 @@
                         let interval = setInterval(async() => {
                             let txReceipt = await web3.provider.getTransactionReceipt(tx.hash);
                             if(txReceipt && txReceipt.blockNumber && found == false){
+                                if(token.symbol !== process.env.NETWORK_BASE_CURRENCY_SYMBOL.toString()) {
+                                    balanceStore.readBalance(account.address, {symbol: process.env.NETWORK_BASE_CURRENCY_SYMBOL.toString() } );
+                                }
                                 balanceStore.readBalance(account.address, token);
                                 clearInterval(interval);
                                 transferStore.setDone(transfer);
