@@ -6,7 +6,6 @@ export const useAccountStore = defineStore('account', {
 
   state: () => ({
     loading: false,
-    autoLogin: false,
     authenticated: false,
     address: '',
     truncatedAddress: ''
@@ -14,7 +13,6 @@ export const useAccountStore = defineStore('account', {
 
   getters: {
     isLoading: state => state.loading,
-    isAutoLoading: state => (state.loading && state.autoLogin),
     isAuthenticated: state => state.authenticated,
     getAddress: state => state.address,
     getTruncatedAddress: state => state.truncatedAddress
@@ -33,20 +31,9 @@ export const useAccountStore = defineStore('account', {
             this.setAddress(response[0]);
             return false;
         }).catch(e => {
-            this.authenticated = false;
             this.loading = false;
-            this.setAddress('');
             return "Login error: " + e.message;
         });
-    },
-    autoLogin(){
-      try {
-        this.authenticated = true;
-        this.address = null;
-        return false;
-      } catch (e) {
-        return "Auto Login error: " +  e.message;
-      }
     },
     logout(){
       try {

@@ -3,7 +3,7 @@ import { web3 } from 'boot/web3';
 
 export const useNetworkStore = defineStore('network', {
     state: () => ({
-        chainId: web3.initial_network,
+        chainId: web3.network,
     }),
 
     getters: {

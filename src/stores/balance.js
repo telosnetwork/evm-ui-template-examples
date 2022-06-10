@@ -3,6 +3,8 @@ import { web3 } from 'boot/web3';
 import { slimERC20 } from '../abi/slimERC20';
 import { ethers } from "ethers";
 import { Cookies } from 'quasar'
+
+// Load ERC20 tokens from ENV variable and Cookies
 const ckTokens = Cookies.get('tokens')?.split(",");
 const tokens = process.env.EVM_TOKENS.split(",");
 
@@ -19,6 +21,7 @@ export const useBalanceStore = defineStore('balance', {
   },
 
   actions: {
+      /** Gets current stored balance for a token **/
       getBalance(token){
           let amount = 0;
           this.balances.forEach(balance => {
@@ -28,6 +31,8 @@ export const useBalanceStore = defineStore('balance', {
           })
           return amount;
       },
+
+      /** Adds a token for balance tracking & saves it to cookie **/
       async addToken(token, cookies){
           if(this.tokens.includes(token) === false){
               this.tokens.push(token);
@@ -39,10 +44,7 @@ export const useBalanceStore = defineStore('balance', {
                   return await contract.balanceOf(this.account).then(balance => {
                       this.balances.push({
                           amount: ethers.utils.formatEther(balance),
-                          token: {
-                              symbol: symbol,
-                              address: token
-                          }
+                          token: { symbol: symbol, address: token }
                       });
                       return false;
                   }).catch(e => {
@@ -55,6 +57,8 @@ export const useBalanceStore = defineStore('balance', {
               return "Token was already added";
           }
       },
+
+      /** Read a token (base currency OR ERC20) balance for a specific account **/
       async readBalance(account, token){
           let balance = 0;
           if(token.symbol === process.env.NETWORK_BASE_CURRENCY_SYMBOL.toString()){
@@ -75,9 +79,12 @@ export const useBalanceStore = defineStore('balance', {
           });
           return balance;
       },
+
+      /** Read base currency & ERC20 balances for a specific account **/
       async readBalances(account){
           this.account = account;
           let nBalances = [];
+          // READ & PUSH BASE CURRENCY BALANCE
           let balance = await web3.provider.getBalance(account);
           nBalances.push({
               amount: ethers.utils.formatEther(balance),
@@ -85,6 +92,7 @@ export const useBalanceStore = defineStore('balance', {
                   symbol: process.env.NETWORK_BASE_CURRENCY_SYMBOL.toString()
               }
           });
+          // READ & PUSH ERC20 BALANCES
           await Promise.all(this.tokens.map(async(token) => {
               let contract = new ethers.Contract(token, slimERC20, web3.signer);
               try {
