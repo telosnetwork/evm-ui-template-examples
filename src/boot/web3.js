@@ -14,6 +14,7 @@ let web3 = {
 
 import { useNetworkStore } from 'stores/network';
 import { useAccountStore } from 'stores/account';
+import { useBalanceStore } from 'stores/balance';
 
 export default async ({  app, router, store }) => {
     // STORE INITIAL NETWORK
@@ -33,6 +34,8 @@ export default async ({  app, router, store }) => {
     // ACCOUNT LISTENER
     window.ethereum.on('accountsChanged', (accounts) => {
         let account = useAccountStore();
+        let balanceStore = useBalanceStore();
+        balanceStore.readBalances(accounts[0]);
         account.setAddress(accounts[0]);
     });
 
