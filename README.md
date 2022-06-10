@@ -12,7 +12,7 @@ npm install -g @vue/cli
 npm install -g @quasar/cli
 ```
 
-## Clone this repo to your local machine
+## Clone this repo to your local machine and enter its directory
 
 ## Install the project dependencies
 ```bash
