@@ -6,7 +6,7 @@ Use this example built from our [Telos EVM Quasar Vue Template](https://github.c
 
 This template requires NodeJS 14+ and NPM installed
 
-## Add Vue and Quasar packages
+## Add Vue and Quasar packages globally
 ```bash
 npm install -g @vue/cli
 npm install -g @quasar/cli
