@@ -6,7 +6,15 @@ Use this template as a starting point for your app and save the time of writing 
 
 This template requires NodeJS 14+ and NPM installed
 
-## Install the dependencies
+## Add Vue and Quasar packages
+```bash
+yarn global add @vue/cli
+yarn global add @quasar/cli
+```
+
+## Clone this repo to your local machine
+
+## Install the project dependencies
 ```bash
 npm install
 ```
