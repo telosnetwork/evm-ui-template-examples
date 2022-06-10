@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "@telosnetwork/telosevm-js": "^0.2.7",
     "core-js": "^3.6.5",
-    "dayjs": "^1.11.3",
     "dotenv": "^16.0.1",
     "ethers": "^5.6.8",
     "node-fetch": "^2.6.7",
