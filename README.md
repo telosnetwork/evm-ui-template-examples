@@ -8,8 +8,8 @@ This template requires NodeJS 14+ and NPM installed
 
 ## Add Vue and Quasar packages
 ```bash
-yarn global add @vue/cli
-yarn global add @quasar/cli
+npm install -g @vue/cli
+npm install -g @quasar/cli
 ```
 
 ## Clone this repo to your local machine
