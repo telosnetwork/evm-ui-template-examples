@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="col">{{ Math.round(balance.amount * 10000) / 10000 }}</div>
-                    <div class="col" :key="'send-' + network.chainId">
+                    <div class="col" >
                         <q-icon :title="'Transfer ' + balance.token.symbol" clickable v-if="network.isExpectedNetwork() && balance.amount > 0" name="logout" @click="transferModalToggle(balance.token)" />
                         <div v-if="!network.isExpectedNetwork()"><q-icon name="warning" /> Change network to send</div>
                     </div>
@@ -52,7 +52,7 @@
                 balanceStore.readBalances(account.address);
             }, process.env.NETWORK_POOL_TIME_MS)
             account.$subscribe((mutation, state) => {
-                if(mutation.events.key == "address" || mutation.events.key == "truncatedAddress"){
+                if(mutation.events && mutation.events.key == "address" || mutation.events && mutation.events.key == "truncatedAddress"){
                     balanceStore.readBalances(account.address);
                 }
             })
