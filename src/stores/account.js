@@ -24,6 +24,9 @@ export const useAccountStore = defineStore('account', {
         this.truncatedAddress = (address.length > 12) ? address.slice(0, 5) + "..." + address.slice(-5) : address;
     },
     async login(){
+        if(web3.signer === null) {
+            return "No provider found. Download Metamask and reload the page";
+        }
         this.loading = true;
         await web3.signer.send("eth_requestAccounts", []).then(async (response) => {
             this.authenticated = true;

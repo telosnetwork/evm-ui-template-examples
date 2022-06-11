@@ -1,12 +1,20 @@
 <template>
     <div>
         <div v-if="!account.isAuthenticated">
-            <q-btn
-                    @click="showLogin = true"
-                    color="positive"
-                    text-color="white"
-                    :label="label"
-            />
+            <div v-if="network.isExpectedNetwork()">
+                <q-btn
+                        @click="showLogin = true"
+                        color="positive"
+                        text-color="white"
+                        :label="label"
+                />
+            </div>
+            <q-btn v-else @click="network.switchNetwork" color="black" clickable>
+                <div class="flex q-gutter-sm">
+                    <q-icon size="1.5em" name="swap_horizontal_circle" />
+                    <div>Change network</div>
+                </div>
+            </q-btn>
         </div>
         <div v-if="account.isAuthenticated " class="flex centered">
             <q-spinner
@@ -21,7 +29,7 @@
             </div>
             <q-btn v-else @click="network.switchNetwork" color="black" clickable>
                 <div class="flex q-gutter-sm">
-                <q-icon  size="1.5em" name="swap_horizontal_circle" />
+                <q-icon size="1.5em" name="swap_horizontal_circle" />
                 <div>Change network</div>
                 </div>
             </q-btn>
@@ -110,7 +118,7 @@
             },
             async onLogout() {
                 this.error = null;
-                const error = await account.logout();
+                this.error = await account.logout();
             },
             async onLogin() {
                 this.error = null;

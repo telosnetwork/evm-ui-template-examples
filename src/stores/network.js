@@ -4,6 +4,7 @@ import { web3 } from 'boot/web3';
 export const useNetworkStore = defineStore('network', {
     state: () => ({
         chainId: web3.network,
+        loading: false,
     }),
 
     getters: {
@@ -16,6 +17,7 @@ export const useNetworkStore = defineStore('network', {
         },
         isExpectedNetwork() { return this.chainId === parseInt(process.env.NETWORK_EVM_CHAIN_ID)},
         async switchNetwork(){
+            this.loading = true;
             await window.ethereum.request({
                 method: "wallet_addEthereumChain",
                 params: [{
@@ -23,13 +25,14 @@ export const useNetworkStore = defineStore('network', {
                     rpcUrls: [process.env.NETWORK_EVM_RPC],
                     chainName: process.env.NETWORK_EVM_CHAIN_NAME,
                     nativeCurrency: {
-                        name: "TLOS",
-                        symbol: "TLOS",
-                        decimals: 18
+                        name: process.env.NETWORK_BASE_CURRENCY_NAME,
+                        symbol: process.env.NETWORK_BASE_CURRENCY_SYMBOL,
+                        decimals: parseInt(process.env.NETWORK_BASE_CURRENCY_DECIMALS)
                     },
                     blockExplorerUrls: [process.env.NETWORK_EVM_EXPLORER]
                 }]
             });
+            this.loading = false;
         },
     }
 })

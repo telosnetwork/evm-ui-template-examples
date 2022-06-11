@@ -8,14 +8,13 @@
       >
       <div  class="description">
         <p>
-          Use this <a href="https://github.com/telosnetwork/evm-ui-template" target="_blank">template on Github</a> as a starting point for your app and save the time of writing all the boilerplate code.
-          It uses <b>Quasar & Vue</b> and has an implementation <b>etherJS</b>.
-          You can test it with the Login button and get inspiration using the examples in the side menu like our Wallet Page (query balances, send transfers) & NFT Gallery (query metadata).
+          This is an implementation of <a href="https://github.com/telosnetwork/evm-ui-template" target="_blank">our EVM UI template on Github</a>, a starting point for your app that saves you the time of writing all the boilerplate code.
+          It uses <b>Quasar & Vue</b> as well as <b>etherJS</b>.
+          You can test it using the Login button and navigating to the Wallet Page (query balances, send transfers) & NFT Gallery (query metadata).
         </p>
         <div class="q-gutter-md">
-
-          <q-btn href="https://github.com/telosnetwork/evm-ui-template/generate"  color="primary" label="Use this template" icon="settings_suggest" />
-          <q-btn href="https://github.com/telosnetwork/erc20-template/generate"  color="positive" label="Use our ERC20 template" icon="settings_suggest" />
+          <q-btn href="https://github.com/telosnetwork/evm-ui-template/generate"  color="primary" label="Use our UI Template" icon="settings_suggest" />
+          <q-btn href="https://github.com/telosnetwork/erc20-template/generate"  color="primary" label="Use our ERC20 Template" icon="settings_suggest" />
           <q-btn href="https://www.telos.net" target="_blank" color="secondary" label="Visit telos.net" icon="visibility" />
         </div>
       </div>

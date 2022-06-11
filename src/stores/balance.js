@@ -32,6 +32,10 @@ export const useBalanceStore = defineStore('balance', {
           return amount;
       },
 
+      isLoading(){
+          return this.loading;
+      },
+
       /** Adds a token for balance tracking & saves it to cookie **/
       async addToken(token, cookies){
           if(this.tokens.includes(token) === false){
